@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smart Study Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Smart Study Planner</h1>
+    <button id="themeToggle">Toggle Dark Mode</button>
+
+    <form id="taskForm">
+        <input type="text" id="subject" placeholder="Subject" required>
+        <input type="date" id="deadline" required>
+
+        <select id="priority">
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul id="taskList"></ul>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
