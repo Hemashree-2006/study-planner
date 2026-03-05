@@ -13,7 +13,7 @@ function renderTasks() {
 
         li.innerHTML = `
             <span style="text-decoration: ${task.completed ? 'line-through' : 'none'}">
-                ${task.subject} - ${task.deadline} - ${task.priority}
+                ${task.subject} - ${task.deadline} - ${task.time} - ${task.priority}
             </span>
             <button onclick="toggleComplete(${index})">
                 ${task.completed ? 'Undo' : 'Complete'}
@@ -42,11 +42,13 @@ document.getElementById("taskForm").addEventListener("submit", function (e) {
 
     const subject = document.getElementById("subject").value;
     const deadline = document.getElementById("deadline").value;
+    const time = document.getElementById("taskTime").value;
     const priority = document.getElementById("priority").value;
 
     tasks.push({
         subject,
         deadline,
+        time,
         priority,
         completed: false
     });
@@ -73,3 +75,22 @@ toggleBtn.addEventListener("click", function () {
         localStorage.setItem("theme", "light");
     }
 });
+setInterval(function () {
+
+    const now = new Date();
+    const currentTime = now.toTimeString().slice(0, 5); // HH:MM
+
+    tasks.forEach(function (task) {
+
+        if (task.time === currentTime && !task.completed) {
+
+            alert("⏰ Time to study: " + task.subject);
+
+            let audio = new Audio("https://www.soundjay.com/button/beep-07.wav");
+            audio.play();
+
+        }
+
+    });
+
+}, 60000); // checks every 1 minute
