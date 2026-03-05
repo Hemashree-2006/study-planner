@@ -78,7 +78,10 @@ toggleBtn.addEventListener("click", function () {
 setInterval(function () {
 
     const now = new Date();
-    const currentTime = now.toTimeString().slice(0, 5); // HH:MM
+    const currentHours = now.getHours().toString().padStart(2, '0');
+    const currentMinutes = now.getMinutes().toString().padStart(2, '0');
+
+    const currentTime = currentHours + ":" + currentMinutes;
 
     tasks.forEach(function (task) {
 
@@ -89,8 +92,11 @@ setInterval(function () {
             let audio = new Audio("https://www.soundjay.com/button/beep-07.wav");
             audio.play();
 
+            task.completed = true;  // stops repeating
+            saveTasks();
+            renderTasks();
         }
 
     });
 
-}, 60000); // checks every 1 minute
+}, 1000);
