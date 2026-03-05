@@ -1,7 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
-    padding: 40px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
 }
 
 h1 {
@@ -77,4 +79,17 @@ button:nth-child(3) {
 
 .dark-mode button {
     opacity: 0.9;
+}
+
+.container {
+    background: white;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .container {
+    background: #2c2c2c;
 }
